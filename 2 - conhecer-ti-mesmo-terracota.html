@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conhecer a Ti Mesmo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Fundos */
+            --bg-light: #fdf9f6;
+            --bg-warm: #f9f3ed;
+            --bg-card: #ffffff;
+            --bg-soft: #f3ebe3;
+            
+            /* Terracota */
+            --terracotta: #c4785a;
+            --terracotta-dark: #a85d42;
+            --terracotta-light: #d4927a;
+            --terracotta-soft: rgba(196, 120, 90, 0.12);
+            --terracotta-glow: rgba(196, 120, 90, 0.25);
+            
+            /* Dourado */
+            --gold: #c9a66b;
+            --gold-dark: #b8956a;
+            --gold-light: #ddc9a3;
+            --gold-soft: rgba(201, 166, 107, 0.15);
+            --gold-glow: rgba(201, 166, 107, 0.3);
+            
+            /* Gradientes */
+            --gradient-warm: linear-gradient(135deg, var(--terracotta) 0%, var(--gold) 100%);
+            --gradient-gold: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 50%, var(--gold-light) 100%);
+            
+            /* Textos */
+            --text-dark: #3d2c24;
+            --text-medium: #6b5548;
+            --text-soft: #9a8578;
+            
+            /* Outros */
+            --border-light: rgba(61, 44, 36, 0.08);
+            --shadow-soft: 0 4px 20px rgba(61, 44, 36, 0.06);
+            --shadow-medium: 0 8px 40px rgba(61, 44, 36, 0.08);
+            --shadow-elevated: 0 20px 60px rgba(61, 44, 36, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-alt {
+            background: var(--bg-warm);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           HERO SECTION
+        ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 24px;
+            position: relative;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-warm) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 60%);
+            pointer-events: none;
+            animation: breathe 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            left: 30%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--terracotta-glow) 0%, transparent 70%);
+            pointer-events: none;
+            animation: breathe 8s ease-in-out infinite 2s;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.7; transform: translateX(-50%) scale(1.15); }
+        }
+
+        /* Decorative Elements */
+        .hero-decoration {
+            position: absolute;
+            top: 12%;
+            right: 12%;
+            width: 100px;
+            height: 100px;
+            border: 1px solid var(--gold-light);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-decoration:nth-child(2) {
+            top: auto;
+            bottom: 25%;
+            right: auto;
+            left: 8%;
+            width: 70px;
+            height: 70px;
+            border-color: var(--terracotta-light);
+            animation-delay: -2s;
+        }
+
+        .hero-decoration:nth-child(3) {
+            top: 50%;
+            right: 6%;
+            width: 40px;
+            height: 40px;
+            border-color: var(--gold);
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Gold decorative line */
+        .gold-line {
+            width: 60px;
+            height: 2px;
+            background: var(--gradient-gold);
+            margin: 0 auto 32px;
+            border-radius: 2px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-hook {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-style: italic;
+            color: var(--text-medium);
+            margin-bottom: 24px;
+            animation: fadeIn 1s ease-out 0.2s backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            color: var(--text-dark);
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-title .highlight {
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--text-medium);
+            margin-bottom: 48px;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero-cta {
+            animation: fadeInUp 1s ease-out 0.5s backwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-soft);
+            font-size: 0.8rem;
+            animation: bounce 2.5s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--terracotta);
+        }
+
+        /* ============================================
+           VIDEO SECTION
+        ============================================ */
+        .video-section {
+            padding: 80px 0 100px;
+            background: var(--bg-warm);
+            position: relative;
+        }
+
+        .video-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+        }
+
+        .video-intro {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .video-intro h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 400;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .video-intro p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+        }
+
+        .video-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-elevated);
+            border: 1px solid var(--border-light);
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--gold-light), transparent 50%, var(--terracotta-light));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-card) 100%);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .video-placeholder:hover {
+            background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-card) 100%);
+        }
+
+        .play-btn {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: var(--gradient-warm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px var(--terracotta-glow);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .play-btn::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1px solid var(--gold-light);
+            opacity: 0.5;
+        }
+
+        .video-placeholder:hover .play-btn {
+            transform: scale(1.08);
+            box-shadow: 0 15px 50px rgba(196, 120, 90, 0.4);
+        }
+
+        .play-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+            margin-left: 4px;
+        }
+
+        .video-placeholder span {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ============================================
+           FEATURES SECTION
+        ============================================ */
+        .features-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .features-header .label {
+            display: inline-block;
+            padding: 10px 24px;
+            background: var(--gold-soft);
+            border: 1px solid var(--gold-light);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .features-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .features-header p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 36px 28px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-warm);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--gold-light);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--gold-soft), var(--terracotta-soft));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            border: 1px solid var(--gold-light);
+            opacity: 0.3;
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--terracotta);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           STORY SECTION
+        ============================================ */
+        .story-section {
+            padding: 120px 0;
+            background: var(--bg-warm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+        }
+
+        .story-decoration {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            width: 180px;
+            height: 180px;
+            border: 1px solid var(--gold-light);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .story-decoration:nth-child(2) {
+            left: auto;
+            right: 5%;
+            width: 130px;
+            height: 130px;
+            border-color: var(--terracotta-light);
+        }
+
+        .story-content {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .story-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.25rem, 3vw, 1.7rem);
+            font-style: italic;
+            color: var(--text-medium);
+            line-height: 1.9;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        .story-quote::before {
+            content: '"';
+            font-size: 5rem;
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.3;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1;
+        }
+
+        .story-text {
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+
+        .story-text strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .story-highlight {
+            display: inline-block;
+            margin-top: 32px;
+            padding: 20px 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--terracotta);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+        }
+
+        .story-highlight::before,
+        .story-highlight::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        .story-highlight::before {
+            left: 16px;
+        }
+
+        .story-highlight::after {
+            right: 16px;
+        }
+
+        /* ============================================
+           BENEFITS SECTION
+        ============================================ */
+        .benefits-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .benefits-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .benefits-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            color: var(--text-dark);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 24px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            border-color: var(--gold-light);
+            box-shadow: var(--shadow-soft);
+            transform: translateX(6px);
+        }
+
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-warm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px var(--terracotta-glow);
+        }
+
+        .benefit-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+
+        .benefit-item span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* ============================================
+           FOR WHO SECTION
+        ============================================ */
+        .forwho-section {
+            padding: 100px 0;
+            background: var(--bg-warm);
+            position: relative;
+        }
+
+        .forwho-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+        }
+
+        .forwho-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .forwho-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        .forwho-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .forwho-text > p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            margin-bottom: 32px;
+        }
+
+        .forwho-list {
+            list-style: none;
+        }
+
+        .forwho-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .forwho-list li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--gold-soft);
+            border: 1px solid var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .check-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--terracotta);
+            fill: none;
+            stroke-width: 2.5;
+        }
+
+        .forwho-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-soft) 100%);
+            border: 2px solid var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .visual-circle::before {
+            content: '';
+            position: absolute;
+            inset: -24px;
+            border-radius: 50%;
+            border: 1px dashed var(--gold);
+            opacity: 0.4;
+            animation: rotate 40s linear infinite;
+        }
+
+        .visual-circle::after {
+            content: '';
+            position: absolute;
+            inset: -48px;
+            border-radius: 50%;
+            border: 1px dashed var(--terracotta-light);
+            opacity: 0.25;
+            animation: rotate 60s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .visual-circle svg {
+            width: 100px;
+            height: 100px;
+            stroke: var(--terracotta);
+            fill: none;
+            stroke-width: 0.5;
+        }
+
+        /* ============================================
+           CTA SECTION
+        ============================================ */
+        .cta-section {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-warm) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            right: 20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--terracotta-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        .cta-content p {
+            font-size: 1.15rem;
+            color: var(--text-medium);
+            margin-bottom: 40px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px 48px;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-warm);
+            color: white;
+            box-shadow: 0 8px 30px var(--terracotta-glow);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(196, 120, 90, 0.4);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        footer {
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+            background: var(--bg-warm);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+        }
+
+        .footer-links {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--terracotta);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--terracotta);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .copyright {
+            color: var(--text-soft);
+            font-size: 0.85rem;
+        }
+
+        /* ============================================
+           MODAL
+        ============================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(61, 44, 36, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            border-radius: 24px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 48px;
+            position: relative;
+            box-shadow: var(--shadow-elevated);
+            animation: modalIn 0.3s ease-out;
+            border: 1px solid var(--gold-light);
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: var(--bg-soft);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--gold-soft);
+        }
+
+        .modal-close svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-medium);
+        }
+
+        .modal h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 28px;
+            color: var(--terracotta);
+        }
+
+        .modal p {
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .modal h3 {
+            font-size: 1.1rem;
+            margin: 28px 0 12px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 0;
+            }
+
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .hero-decoration {
+                display: none;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+
+            .btn {
+                padding: 18px 36px;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-circle {
+                width: 220px;
+                height: 220px;
+            }
+
+            .visual-circle svg {
+                width: 70px;
+                height: 70px;
+            }
+
+            .story-decoration {
+                display: none;
+            }
+
+            .modal {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         HERO SECTION
+    ============================================ -->
+    <section class="hero">
+        <div class="hero-decoration"></div>
+        <div class="hero-decoration"></div>
+        <div class="hero-decoration"></div>
+        
+        <div class="hero-content">
+            <div class="hero-icon">
+                <svg viewBox="0 0 64 64">
+                    <circle cx="32" cy="32" r="28"/>
+                    <circle cx="32" cy="32" r="18"/>
+                    <circle cx="32" cy="32" r="8"/>
+                </svg>
+            </div>
+            <div class="gold-line"></div>
+            <p class="hero-hook">E se a resposta que você procura... estivesse dentro de você?</p>
+            <h1 class="hero-title">Conhecer a <span class="highlight">Ti Mesmo</span></h1>
+            <p class="hero-subtitle">Descubra quem você realmente é através de uma jornada guiada de autoconhecimento e transformação interior</p>
+            <div class="hero-cta">
+                <a href="#video" class="btn btn-primary">
+                    Descobrir Agora
+                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Role para descobrir</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ============================================
+         VIDEO SECTION
+    ============================================ -->
+    <section class="video-section" id="video">
+        <div class="container">
+            <div class="video-intro reveal">
+                <h2>Assista e descubra como funciona</h2>
+                <p>Uma breve apresentação do que você encontrará nessa jornada</p>
+            </div>
+            <div class="video-wrapper reveal">
+                <div class="video-container">
+                    <div class="video-placeholder" id="videoPlaceholder">
+                        <div class="play-btn">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <span>Clique para assistir</span>
+                    </div>
+                    <!-- Substitua pelo seu vídeo:
+                    <iframe src="SEU_VIDEO_URL" allowfullscreen></iframe>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FEATURES SECTION
+    ============================================ -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-header reveal">
+                <span class="label">O que você vai descobrir</span>
+                <h2>Uma jornada completa de autoconhecimento</h2>
+                <p>Ferramentas práticas e reflexões profundas para você se reconectar com sua essência</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>Autoconhecimento Profundo</h3>
+                    <p>Entenda seus padrões de pensamento, emoções e comportamentos que moldam sua realidade diária.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Exercícios Práticos</h3>
+                    <p>Atividades guiadas passo a passo que você pode aplicar imediatamente no seu dia a dia.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+                    </div>
+                    <h3>Áudios que Falam com Você</h3>
+                    <p>Reflexões personalizadas em áudio que tocam sua essência e guiam sua transformação.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3>Desbloqueie Seu Potencial</h3>
+                    <p>Transforme crenças limitantes em força e descubra capacidades que você nem sabia que tinha.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         STORY SECTION
+    ============================================ -->
+    <section class="story-section">
+        <div class="story-decoration"></div>
+        <div class="story-decoration"></div>
+        <div class="container">
+            <div class="story-content reveal">
+                <p class="story-quote">
+                    Você já se sentiu perdido, sem saber quem realmente é por dentro? Já tentou buscar respostas fora de você... em livros, em outras pessoas, em conquistas... mas ainda assim sentiu um vazio?
+                </p>
+                <p class="story-text">
+                    Muitos de nós passamos a vida inteira tentando nos encaixar em padrões que não são nossos. Buscamos aprovação, sucesso, relacionamentos... mas esquecemos de olhar para o único lugar onde as respostas realmente estão: <strong>dentro de nós mesmos</strong>.
+                </p>
+                <p class="story-text">
+                    A jornada de autoconhecimento não é sobre se tornar alguém diferente. É sobre <strong>descobrir quem você sempre foi</strong>, debaixo de todas as camadas de expectativas e medos acumulados ao longo da vida.
+                </p>
+                <div class="story-highlight">
+                    "A maior aventura é a viagem interior"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         BENEFITS SECTION
+    ============================================ -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="benefits-header reveal">
+                <h2>O que você vai conquistar</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 3l1.5 4.5H18l-3.75 2.75L15.75 15 12 12.25 8.25 15l1.5-4.75L6 7.5h4.5z"/></svg>
+                    </div>
+                    <span>Clareza mental e emocional</span>
+                </div>
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <span>Paz interior e equilíbrio</span>
+                </div>
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    </div>
+                    <span>Descoberta do seu propósito</span>
+                </div>
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    </div>
+                    <span>Libertação de padrões negativos</span>
+                </div>
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <span>Autoconfiança genuína</span>
+                </div>
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <span>Relacionamentos mais saudáveis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOR WHO SECTION
+    ============================================ -->
+    <section class="forwho-section">
+        <div class="container">
+            <div class="forwho-content">
+                <div class="forwho-text reveal">
+                    <h2>Para quem é essa jornada?</h2>
+                    <p>Este conteúdo foi criado para pessoas que sentem que existe algo mais profundo a ser descoberto sobre si mesmas.</p>
+                    <ul class="forwho-list">
+                        <li>
+                            <span class="check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+                            <span>Para quem busca se entender melhor e viver com mais autenticidade</span>
+                        </li>
+                        <li>
+                            <span class="check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+                            <span>Para quem sente que está vivendo no "piloto automático"</span>
+                        </li>
+                        <li>
+                            <span class="check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+                            <span>Para quem quer transformar sua relação consigo mesmo</span>
+                        </li>
+                        <li>
+                            <span class="check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+                            <span>Para quem deseja paz interior e clareza sobre seu caminho</span>
+                        </li>
+                        <li>
+                            <span class="check-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+                            <span>Para quem está pronto para uma verdadeira transformação</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="forwho-visual reveal">
+                    <div class="visual-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" />
+                            <circle cx="50" cy="50" r="35" />
+                            <circle cx="50" cy="50" r="25" />
+                            <circle cx="50" cy="50" r="15" />
+                            <circle cx="50" cy="50" r="5" fill="currentColor" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CTA SECTION
+    ============================================ -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Está pronto para se conhecer de verdade?</h2>
+                <p>Comece agora sua jornada de autoconhecimento e transformação interior</p>
+                <a href="#" class="btn btn-primary">
+                    Quero Começar Agora
+                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+    ============================================ -->
+    <footer>
+        <div class="footer-links">
+            <a href="#" id="privacyLink">Política de Privacidade</a>
+        </div>
+        <p class="copyright">© 2025 Conhecer a Ti Mesmo. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- ============================================
+         PRIVACY MODAL
+    ============================================ -->
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">
+                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+            <h2>Política de Privacidade</h2>
+            <p>Esta política de privacidade descreve como coletamos, usamos e protegemos suas informações pessoais ao utilizar nosso conteúdo "Conhecer a Ti Mesmo".</p>
+            
+            <h3>Informações Coletadas</h3>
+            <p>Podemos coletar informações como nome, e-mail e dados de uso para melhorar sua experiência e personalizar o conteúdo oferecido.</p>
+            
+            <h3>Uso das Informações</h3>
+            <p>Suas informações são utilizadas exclusivamente para fornecer e aprimorar nossos serviços, enviar comunicações relevantes e garantir a segurança da plataforma.</p>
+            
+            <h3>Proteção de Dados</h3>
+            <p>Implementamos medidas de segurança técnicas e organizacionais para proteger suas informações contra acesso não autorizado, alteração ou destruição.</p>
+            
+            <h3>Seus Direitos</h3>
+            <p>Você tem o direito de acessar, corrigir ou excluir suas informações pessoais a qualquer momento, conforme previsto na Lei Geral de Proteção de Dados (LGPD).</p>
+            
+            <h3>Contato</h3>
+            <p>Para dúvidas sobre esta política ou sobre o tratamento de seus dados, entre em contato conosco através dos canais disponíveis na plataforma.</p>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SCRIPTS
+    ============================================ -->
+    <script>
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Privacy Modal
+        const privacyLink = document.getElementById('privacyLink');
+        const privacyModal = document.getElementById('privacyModal');
+        const modalClose = document.getElementById('modalClose');
+
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            privacyModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        modalClose.addEventListener('click', () => {
+            privacyModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        privacyModal.addEventListener('click', (e) => {
+            if (e.target === privacyModal) {
+                privacyModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && privacyModal.classList.contains('active')) {
+                privacyModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Video Placeholder
+        const videoPlaceholder = document.getElementById('videoPlaceholder');
+        videoPlaceholder.addEventListener('click', () => {
+            // Adicione aqui a lógica para carregar seu vídeo
+            alert('Adicione aqui a URL do seu vídeo!');
+        });
+    </script>
+</body>
+</html>
